@@ -1,0 +1,32 @@
+<h1>投稿一覧</h1>
+
+<%= @books.each do |book| %>
+
+  <p>タイトル</p>
+  <span><%= book.title %></span>
+  <p>body</p>
+  <span><%= book.body %></span>
+  <!-- book.[カラム名]と記述することで、レコードのカラムの内容を表示できます -->
+  <%= link_to "show", book_path(book.id) %>
+  <%= link_to "編集", edit_book_path(@book.id) %>
+  <%= link_to "削除", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+  <!--  link_to '表示するテキスト', URL, method: :patch %> -->
+  <!-- きちんとルーティングが自動生成されているのが確認できました。
+一番最後の行を見てみると、destroyアクションのルーティングのパスが変更されている 9章 -->
+  
+<% end %>
+
+
+<h1>新規投稿</h1>
+<!-- form_withにオプション追記 -->
+<%= form_with model: @book, url: '/books', method: :post do |f| %>
+
+  <h4>タイトル</h4>
+  <%= f.text_field :title %>
+  
+  <h4>本文</h4>
+  <%= f.text_area :body %>
+  
+  <%= f.submit '投稿' %>
+  
+<% end %>
