@@ -17,6 +17,19 @@
 <% end %>
 
 
+<% if @list.errors.any? %>
+  <%= @list.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @list.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+<!--errorsは、モデルにバリデーションをかけたときに、発生したエラーの内容を確認できるメソッド-->
+<!--any? と組み合わせることで、エラーが発生しているかどうかを判定できます-->
+<!--any? と組み合わせることで、エラーが発生しているかどうかを判定できます-->
+
+
 <h1>新規投稿</h1>
 <!-- form_withにオプション追記 -->
 <%= form_with model: @book, url: '/books', method: :post do |f| %>

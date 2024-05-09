@@ -8,6 +8,4 @@ Rails.application.routes.draw do
 end
 
 #get 'lists/:id' => 'lists#show', as: 'list'  名前付きルートとは、文字通りルーティング自体に名前をつけておくことです、
-そして名前付きルートがあると、その名前をredirect_toやlink_toでも使用することができます。
-
-
+#そして名前付きルートがあると、その名前をredirect_toやlink_toでも使用することができます。
